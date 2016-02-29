@@ -1,9 +1,10 @@
 
 def reverse_list(l):
+    l.reverse()
     """
     Reverses order of elements in list l.
     """
-    return None
+    return l
 
 
 def test_reverse_list():
@@ -13,6 +14,7 @@ def test_reverse_list():
 # ------------------------------------------------------------------------------
 
 def reverse_string(s):
+    return s[::-1]
     """
     Reverses order of characters in string s.
     """
@@ -26,6 +28,10 @@ def test_reverse_string():
 # ------------------------------------------------------------------------------
 
 def is_english_vowel(c):
+    if c in 'AEOUIYaeouiy':
+        return True
+    else:
+        return False
     """
     Returns True if c is an english vowel
     and False otherwise.
@@ -54,10 +60,16 @@ def test_is_english_vowel():
 # ------------------------------------------------------------------------------
 
 def count_num_vowels(s):
+    count=0
+    for letter in s:
+        if letter in 'aeuoiyAEUOIY':
+             count=count+1
+        else:
+            pass
     """
     Returns the number of vowels in a string s.
     """
-    return None
+    return count
 
 
 def test_count_num_vowels():
@@ -89,11 +101,12 @@ def test_histogram():
 # ------------------------------------------------------------------------------
 
 def get_word_lengths(s):
+    list=[len(x) for x in s.split()]
     """
     Returns a list of integers representing
     the word lengths in string s.
     """
-    return None
+    return list
 
 
 def test_get_word_lengths():
@@ -104,11 +117,12 @@ def test_get_word_lengths():
 # ------------------------------------------------------------------------------
 
 def find_longest_word(s):
+    return max(s.split(),key=len)
     """
     Returns the longest word in string s.
     In case there are several, return the first.
     """
-    return None
+    
 
 
 def test_find_longest_word():
@@ -121,11 +135,16 @@ def test_find_longest_word():
 # ------------------------------------------------------------------------------
 
 def validate_dna(s):
+    valid_dna="ACGTacgt"
+    if all(i in valid_dna for i in s):
+        return True
+    else:
+        return False
     """
     Return True if the DNA string only contains characters
     a, c, t, or g (lower or uppercase). False otherwise.
     """
-    return None
+    
 
 
 def test_validate_dna():
@@ -137,13 +156,30 @@ def test_validate_dna():
 # ------------------------------------------------------------------------------
 
 def base_pair(c):
+    if c=='a':
+         return 't'
+    if c=='A':
+         return 't'
+    if c=='t':
+         return 'a'
+    if c=='T':
+        return 'a'
+    if c=='g':
+         return 'c'
+    if c=='G':
+         return 'c'
+    if c=='c':
+         return 'g'
+    if c=='C':
+         return 'g'
+    if c not in 'ACGTacgt':
+         return 'unknown'
     """
     Return the corresponding character (lowercase)
     of the base pair. If the base is not recognized,
     return 'unknown'.
     """
-    return None
-
+    
 
 def test_base_pair():
     assert base_pair('a') == 't'
@@ -161,11 +197,31 @@ def test_base_pair():
 # ------------------------------------------------------------------------------
 
 def transcribe_dna_to_rna(s):
+    new_dna=''
+    for letter in s:
+          if letter=='A':
+               new_dna=new_dna+'A'
+          if letter=='T':
+               new_dna=new_dna+'U'
+          if letter=='C':
+               new_dna=new_dna+'C'
+          if letter=='G':
+               new_dna=new_dna+'G'
+          if letter=='a':
+               new_dna=new_dna+'A'
+          if letter=='t':
+               new_dna=new_dna+'U'
+          if letter=='c':
+               new_dna=new_dna+'C'
+          if letter=='g':
+               new_dna=new_dna+'G'
+
+
     """
     Return string s with each letter T replaced by U.
     Result is always uppercase.
     """
-    return None
+    return new_dna
 
 
 def test_transcribe_dna_to_rna():
@@ -176,11 +232,29 @@ def test_transcribe_dna_to_rna():
 # ------------------------------------------------------------------------------
 
 def get_complement(s):
+    new_dna=''
+    for letter in s:
+          if letter=='A':
+               new_dna=new_dna+'T'
+          if letter=='T':
+               new_dna=new_dna+'A'
+          if letter=='C':
+               new_dna=new_dna+'G'
+          if letter=='G':
+               new_dna=new_dna+'C'
+          if letter=='a':
+               new_dna=new_dna+'T'
+          if letter=='t':
+               new_dna=new_dna+'A'
+          if letter=='c':
+               new_dna=new_dna+'G'
+          if letter=='g':
+               new_dna=new_dna+'C'
     """
     Return the DNA complement in uppercase
     (A -> T, T-> A, C -> G, G-> C).
     """
-    return None
+    return new_dna
 
 
 def test_get_complement():
@@ -191,11 +265,31 @@ def test_get_complement():
 # ------------------------------------------------------------------------------
 
 def get_reverse_complement(s):
+    new_dna=''
+    for letter in s:
+          if letter=='A':
+               new_dna=new_dna+'T'
+          if letter=='T':
+               new_dna=new_dna+'A'
+          if letter=='C':
+               new_dna=new_dna+'G'
+          if letter=='G':
+               new_dna=new_dna+'C'
+          if letter=='a':
+               new_dna=new_dna+'T'
+          if letter=='t':
+               new_dna=new_dna+'A'
+          if letter=='c':
+               new_dna=new_dna+'G'
+          if letter=='g':
+               new_dna=new_dna+'C'
+    rev=new_dna[::-1]
+
     """
     Return the reverse complement of string s
     (complement reversed in order).
     """
-    return None
+    return rev
 
 
 def test_get_reverse_complement():
@@ -206,10 +300,11 @@ def test_get_reverse_complement():
 # ------------------------------------------------------------------------------
 
 def remove_substring(substring, string):
+    string.join(substring)
     """
     Returns string with all occurrences of substring removed.
     """
-    return None
+    return string
 
 
 def test_remove_substring():
@@ -393,4 +488,12 @@ def pythagorean_triples(n):
 # ------------------------------------------------------------------------------
 
 def test_pythagorean_triples():
-    pass  # so far we do not test anything, check also test coverage
+    n=5
+    assert pythagorean_triples(n) == [(3, 4, 5)]
+    n=15
+    assert pythagorean_triples(n) == [(3, 4, 5),(6, 8, 10),(5, 12, 13),(9, 12, 15)]
+    n=6
+    assert not pythagorean_triples(n) == (3, 4, 5)  # so far we do not test anything, check also test coverage,
+   
+#-----------------------------------------------------------------------------
+
